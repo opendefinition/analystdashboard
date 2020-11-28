@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Analyst Dashboard</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<style>
+		.full-width {
+			width: 100% !important;
+		}
+		.half-width {
+			width: 50% !important;
+		}
+	</style>
+	<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.css" media="screen">
+ 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+ 	<style>
+ 		body, * {
+    		font-family: 'Roboto', sans-serif !important;
+    		font-size: 12px;
+ 		}
+ 	</style>
+</head>
+<body class="bg-dark">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	    <div class="d-flex flex-grow-1">
+	        <a href="#" class="navbar-brand">Analyst Dashboard</a>
+	        <div class="mr-2 my-auto w-100 d-inline-block order-1">
+	            <div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text bg-dark border-dark text-light text-success" id="basic-addon1">IP</span>
+					</div>
+	                <input type="text" id="searchfield" name="searchfield" class="form-control border border-right-0 border-dark rounded-0 text-dark" placeholder="Search...">
+	            </div>
+	        </div>
+	    </div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row bg-dark">
+			<div class="col-8">
+				<br />
+				<div id="resourceslinks" name="resourceslinks"></div>
+			</div>
+			<div class="col-2">
+				<br />
+
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">Manual Lookup</h5>
+						<p class="card-text">
+							<table class="table">
+								<tr>
+									<td><a href="https://malwr.com/" target="_blank">Malwr</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://passivedns.mnemonic.no/" target="_blank">PassiveDNS Mnemonic</a></td>
+								</tr>
+								<tr>		
+									<td><a href="https://pulsedive.com" target="_blank">Pulsedive</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://unit42.paloaltonetworks.com" target="_blank">Unit 42 (Palo Alto Networks)</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://www.virustotal.com/#/home/upload" target="_blank">VirusTotal</a></td>
+								</tr>
+							</table>
+						</p>
+					</div>
+				</div>
+
+				<br />
+
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">URL Lookup</h5>
+						<p class="card-text">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><a href=" https://www.brightcloud.com/tools/url-ip-lookup.php" target="_blank">Brightcloud</a></li>
+								<li class="list-group-item"><a href="https://www.urlvoid.com" target="_blank">URL Void</a></li>
+							</ul>	
+						</p>
+					</div>
+				</div>
+
+				<br />
+			</div>
+
+			<div class="col-1">
+				<br />
+
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">Other Resources</h5>
+						<p class="card-text">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><a href="https://www.f-secure.com/en/web/labs_global/descriptions-index" target="_blank">F-Secure Threat Descriptions</a></li>
+								<li class="list-group-item"><a href="https://attack.mitre.org" target="_blank">MITRE ATT&CK</a></li>
+								<li class="list-group-item"><a href="https://www.shadowserver.org/wiki/" target="_blank">Shadow Server</a></li>
+								<li class="list-group-item"><a href="https://wigle.net/" target="_blank">Wigle: search for open WiFi networks</a></li>
+								<li class="list-group-item"><a href="http://insecam.org/" target="_blank">Insecam: Open IP cameras</a></li>
+								<li class="list-group-item"><a href="https://hunter.io/" target="_blank">Hunter: E-mail search database</a></li>
+								<li class="list-group-item"><a href="https://hunter.io/" target="_blank">Hunter: E-mail search database</a></li>
+								<li class="list-group-item"><a href="http://zorexeye.com/" target="_blank">ZorexEye: Search images, software and other</a></li>
+								<li class="list-group-item"><a href="https://pulsedive.com/" target="_blank">Pulsedive: OSINT search</a></li>
+								<li class="list-group-item"><a href="https://vigilante.pw/" target="_blank">Vigilante: Breach database</a></li>
+								<li class="list-group-item"><a href="https://viz.greynoise.io/" target="_blank">Greynoise Vizualise: Extended Greynoise querying</a></li>
+							</ul>	
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var sources = {
+			"AbuseIPB": "https://www.abuseipdb.com/check/$replace$",
+			"Alien Vault OTX": "https://otx.alienvault.com/browse/pulses?q=$replace$",
+			"Censys.io": "https://censys.io/ipv4/$replace$",
+			"IBM X-Force Exchange": "https://exchange.xforce.ibmcloud.com/ip/$replace$",
+			"IntelX": "https://intelx.io/?s=$replace$",
+			"Greynoise.io": "https://viz.greynoise.io/query/?gnql=$replace$",
+			"Maltiverse": "https://www.maltiverse.com/search;query=$replace$;page=1;sort=query_score",
+			"Netograph": "https://netograph.io/datasets/social/ip/$replace$",
+			"Onyphe": "https://www.onyphe.io/search/?query=$replace$",
+			"Shodan.io": "https://www.shodan.io/host/$replace$",
+			"VirusTotal": "https://www.virustotal.com/#/ip-address/$replace$",
+			"Zoomeye": "https://www.zoomeye.org/searchResult?q=$replace$",
+		}
+
+		jQuery.noConflict();
+
+		jQuery("#resourceslinks").on("click", "button", function() {
+			if(jQuery(this).attr("id") == "openallbt") {
+				jQuery("body").find("#links > li > a").each(function(index) {
+					window.open(jQuery(this).attr("href"), index)
+				});
+			}
+		});
+
+		jQuery("#searchfield").keyup(function(e){
+    		if(e.keyCode == 13)
+    		{
+				var search_value = jQuery("#searchfield").val();
+
+				var display_card = jQuery("<div>").
+					attr("class", "card")
+					.append(
+						jQuery("<div>")
+							.attr("class", "card-body")
+							.append(
+								jQuery("<h5>")
+									.attr("class", "card-title")
+									.text("Target " + search_value)
+							)
+							.append(
+								jQuery("<p>")
+									.attr("class", "card-text")
+									.append(
+										jQuery("<ul>")
+											.attr("id", "links")
+											.attr("name", "links")
+											.attr("class", "list-group list-group-flush")
+									)
+							)
+							.append(
+								jQuery("<button>")
+									.attr("id", "openallbt")
+									.attr("name", "openallbt")
+									.attr("class", "btn btn-dark")
+									.text("Open all in new tabs")
+							)	
+					)
+
+
+				var link_display = jQuery(display_card).find("ul");
+
+				for (var key in sources) {
+					var text = key;
+
+					if (sources[key].indexOf("$replace$") < 0) {
+						text = key + " (No IP assignment possible)"
+					}
+
+					var url = sources[key].replace("$replace$", search_value);
+					jQuery(link_display)
+						.append(
+							jQuery("<li>").append(
+								jQuery("<a>")
+									.attr("href", url)
+									.attr("target", "_bank")
+									.attr("class", "")
+									.text(text)
+							).attr("class", "list-group-item")
+						)
+	        	}
+
+	        	jQuery("#resourceslinks").html('');
+	        	jQuery("#resourceslinks").hide();
+				jQuery("#resourceslinks")
+					.append(display_card)
+					.show("fade", 1000);
+			};
+		});
+	</script>
+</body>
+</html>
