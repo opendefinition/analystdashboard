@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Analyst Dashboard</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <style>
+         .full-width {
+         width: 100% !important;
+         }
+         .half-width {
+         width: 50% !important;
+         }
+      </style>
+
+      <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css" media="screen">
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">   
+
+      <style>
+         body, * {
+         font-family: 'Roboto', sans-serif !important;
+         font-size: 12px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="row">
+            <div class="col">
+               <br />
+               <br />
+               <h1>analyst dashboard</h1>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">search</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">other resources</a>
+                  </li>
+               </ul>
+               <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                   <div class="alert alert-secondary">
+                     Feel free to search for any IP's, but before you do, make sure to allow all popups from this domain. This is because when you click on the "Open all in new tabs" the browser needs permissions to do just that: open all links in new tabs! :)
+                  </div>
+                     <br />
+                     <div class="input-group">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text bg-primary" id="basic-addon1">IP</span>
+                        </div>
+                        <input type="text" id="searchfield" name="searchfield" class="form-control border rounded text-dark" placeholder="Search...">
+                     </div>
+                     <div id="resourceslinks"></div>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                     <div class="alert alert-secondary">
+                        Sometimes we all must go hunting on our own. In such cases, the following resources contains gold. Please use these links as a basis for your endavours!
+                     </div>
+
+                     <table class="table table-dark table-striped table-hover">
+                        <thead class="thead-dark">
+                           <tr>
+                              <th scope="col">Resource</th>
+                              <th scope="col">Description</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td><a href="https://malwr.com/" target="_blank">Malwr</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://passivedns.mnemonic.no/" target="_blank">PassiveDNS Mnemonic</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://pulsedive.com" target="_blank">Pulsedive</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://unit42.paloaltonetworks.com" target="_blank">Unit 42 (Palo Alto Networks)</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://www.virustotal.com/#/home/upload" target="_blank">VirusTotal</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href=" https://www.brightcloud.com/tools/url-ip-lookup.php" target="_blank">Brightcloud</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://www.urlvoid.com" target="_blank">URL Void</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://www.f-secure.com/en/web/labs_global/descriptions-index" target="_blank">F-Secure Threat Descriptions</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://attack.mitre.org" target="_blank">MITRE ATT&CK</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://www.shadowserver.org/wiki/" target="_blank">Shadow Server</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://wigle.net/" target="_blank">Wigle: search for open WiFi networks</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="http://insecam.org/" target="_blank">Insecam: Open IP cameras</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://hunter.io/" target="_blank">Hunter: E-mail search database</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="http://zorexeye.com/" target="_blank">ZorexEye: Search images, software and other</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://pulsedive.com/" target="_blank">Pulsedive: OSINT search</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://vigilante.pw/" target="_blank">Vigilante: Breach database</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://viz.greynoise.io/" target="_blank">Greynoise Vizualise: Extended Greynoise querying</a></td>
+                              <td></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script>
+         var sources = {
+         	"AbuseIPB": "https://www.abuseipdb.com/check/$replace$",
+         	"Alien Vault OTX": "https://otx.alienvault.com/browse/pulses?q=$replace$",
+         	"Censys.io": "https://censys.io/ipv4/$replace$",
+         	"IBM X-Force Exchange": "https://exchange.xforce.ibmcloud.com/ip/$replace$",
+         	"IntelX": "https://intelx.io/?s=$replace$",
+         	"Greynoise.io": "https://viz.greynoise.io/query/?gnql=$replace$",
+         	"Maltiverse": "https://www.maltiverse.com/search;query=$replace$;page=1;sort=query_score",
+         	"Netograph": "https://netograph.io/datasets/social/ip/$replace$",
+         	"Onyphe": "https://www.onyphe.io/search/?query=$replace$",
+         	"Shodan.io": "https://www.shodan.io/host/$replace$",
+         	"VirusTotal": "https://www.virustotal.com/#/ip-address/$replace$",
+         	"Zoomeye": "https://www.zoomeye.org/searchResult?q=$replace$",
+         }
+         
+         jQuery.noConflict();
+         
+         jQuery("#resourceslinks").on("click", "button", function() {
+         	if(jQuery(this).attr("id") == "openallbt") {
+         		jQuery("body").find("#links > tbody > tr > td > a").each(function(index) {
+         			window.open(jQuery(this).attr("href"), index)
+         		});
+         	}
+         });
+         
+         jQuery("#searchfield").keyup(function(e){
+           		if(e.keyCode == 13)
+           		{
+         		var search_value = jQuery("#searchfield").val();
+         
+         		var display_card = jQuery("<div>")
+					.append(
+						jQuery("<br />")
+					)
+					.append(jQuery("<table>")
+							.attr("id", "links")
+							.attr("name", "links")
+							.attr("class", "table table-dark table-striped table-hover")
+							.append(jQuery("<caption>")
+								.text("This table contains all searchable threat intel feeds currently registered in analyst dashboard")
+							)
+							.append(jQuery("<thead>")
+								.attr("class", "thead-dark")
+								.append(jQuery("<tr>")
+									.append(jQuery("<th>")
+										.text("Resource")
+									)
+									.append(jQuery("<th>")
+										.text("Description")
+									)
+								)
+							)
+							.append(jQuery("<tbody>"))
+					)
+ 					.append(
+ 						jQuery("<button>")
+ 							.attr("id", "openallbt")
+ 							.attr("name", "openallbt")
+ 							.attr("class", "btn btn-primary")
+ 							.text("Open all in new tabs")
+ 					)	
+         
+         		var link_display = jQuery(display_card).find("table");
+         
+         		for (var key in sources) {
+         			var text = key;
+         
+         			if (sources[key].indexOf("$replace$") < 0) {
+         				text = key + " (No IP assignment possible)"
+         			}
+         
+         			var url = sources[key].replace("$replace$", search_value);
+         			jQuery(link_display)
+         				.append(
+         					jQuery("<tr>")
+         						.append(
+         							jQuery("<td>").append(
+         								jQuery("<a>")
+         									.attr("href", url)
+         									.attr("target", "_bank")
+		         							.attr("class", "")
+		         							.text(text)
+         							)
+         						)
+         						.append(
+         							jQuery("<td>")
+         						)
+         				)
+                	}
+         
+                	jQuery("#resourceslinks").html('');
+                	jQuery("#resourceslinks").hide();
+         		jQuery("#resourceslinks")
+         			.append(display_card)
+         			.show("fade", 1000);
+         	};
+         });
+      </script>
+   </body>
+</html>
