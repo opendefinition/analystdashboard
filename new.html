@@ -146,20 +146,68 @@
       </div>
 
       <script>
-         var sources = {
-         	"AbuseIPDB": "https://www.abuseipdb.com/check/$replace$",
-         	"Alien Vault OTX": "https://otx.alienvault.com/browse/pulses?q=$replace$",
-         	"Censys.io": "https://censys.io/ipv4/$replace$",
-         	"IBM X-Force Exchange": "https://exchange.xforce.ibmcloud.com/ip/$replace$",
-         	"IntelX": "https://intelx.io/?s=$replace$",
-         	"Greynoise.io": "https://viz.greynoise.io/query/?gnql=$replace$",
-         	"Maltiverse": "https://www.maltiverse.com/search;query=$replace$;page=1;sort=query_score",
-         	"Netograph": "https://netograph.io/datasets/social/ip/$replace$",
-         	"Onyphe": "https://www.onyphe.io/search/?query=$replace$",
-         	"Shodan.io": "https://www.shodan.io/host/$replace$",
-         	"VirusTotal": "https://www.virustotal.com/#/ip-address/$replace$",
-         	"Zoomeye": "https://www.zoomeye.org/searchResult?q=$replace$",
-         }
+         var sources = [
+         	{ 
+               title: "AbuseIPDB", 
+               link: "https://www.abuseipdb.com/check/$replace$",
+               desc: "Abusive IP search database"
+            },
+            {
+         	   title: "Alien Vault OTX",
+               link: "https://otx.alienvault.com/browse/pulses?q=$replace$",
+               desc: "Threat Intel Search Database"
+            },
+         	{
+               title: "Censys.io",
+               link: "https://censys.io/ipv4/$replace$",
+               desc: "Internet Connected Devices Search Database"
+            },
+         	{
+               title: "IBM X-Force Exchange",
+               link: "https://exchange.xforce.ibmcloud.com/ip/$replace$",
+               desc: "Threat Intel Search Database"
+            },
+         	{
+               title: "IntelX",
+               link: "https://intelx.io/?s=$replace$",
+               desc: "Threat Intel Search Database"
+            },
+         	{
+               title: "Greynoise.io",
+               link: "https://viz.greynoise.io/query/?gnql=$replace$",
+               desc: "Abusive IP Search Database"
+            },
+         	{
+               title: "Maltiverse",
+               link: "https://www.maltiverse.com/search;query=$replace$;page=1;sort=query_score",
+         	   desc: "Threat Intel Search Database",
+            },
+            {
+               title: "Netograph",
+               link: "https://netograph.io/datasets/social/ip/$replace$",
+               desc: "Net Graph Search Database"
+            },
+         	{
+               title: "Onyphe",
+               link: "https://www.onyphe.io/search/?query=$replace$",
+         	   desc: "Abusive IP Search Database"
+            },
+            {
+               title: "Shodan.io",
+               link: "https://www.shodan.io/host/$replace$",
+               desc: "Internet Connected Devices Search Database"
+            },
+         	{
+               title: "VirusTotal",
+               link: "https://www.virustotal.com/#/ip-address/$replace$",
+         	   desc: "IOC Search Database"
+            },
+            {
+               title: "Zoomeye",
+               link: "https://www.zoomeye.org/searchResult?q=$replace$",
+               desc: "IOC Search Database"
+            },
+         ];
          
          jQuery.noConflict();
          
@@ -213,14 +261,10 @@
 
                      var link_display = jQuery(display_card).find("table");
 
-                     for (var key in sources) {
-                        var text = key;
-               
-                        if (sources[key].indexOf("$replace$") < 0) {
-                           text = key + " (No IP assignment possible)"
-                        }
-               
-                        var url = sources[key].replace("$replace$", search_value);
+                     for (var index in sources) {
+                        var obj = sources[index];
+                        var url = obj.link.replace("$replace$", search_value);
+
                         jQuery(link_display)
                            .append(
                               jQuery("<tr>")
@@ -230,11 +274,12 @@
                                           .attr("href", url)
                                           .attr("target", "_bank")
                                           .attr("class", "")
-                                          .text(text)
+                                          .text(obj.title)
                                     )
                                  )
                                  .append(
                                     jQuery("<td>")
+                                       .text(obj.desc)
                                  )
                            )
                      }
@@ -259,13 +304,6 @@
                   }
                }
             });
-               
-
-            		
-                     
-                     
-         
-               		
       </script>
    </body>
 </html>
