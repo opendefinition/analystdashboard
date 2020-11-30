@@ -152,6 +152,7 @@
       <script>
          var sources = {
          	"AbuseIPB": "https://www.abuseipdb.com/check/$replace$",
+         
          	"Alien Vault OTX": "https://otx.alienvault.com/browse/pulses?q=$replace$",
          	"Censys.io": "https://censys.io/ipv4/$replace$",
          	"IBM X-Force Exchange": "https://exchange.xforce.ibmcloud.com/ip/$replace$",
@@ -178,75 +179,98 @@
          jQuery("#searchfield").keyup(function(e){
            		if(e.keyCode == 13)
            		{
-         		var search_value = jQuery("#searchfield").val();
+            		var search_value = jQuery("#searchfield").val();
+                  var ipv4regex = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/i
+
+                  if (search_value.match(ipv4regex))
+                  {
+                     var display_card = jQuery("<div>")
+                        .append(
+                           jQuery("<br />")
+                        )
+                        .append(jQuery("<table>")
+                              .attr("id", "links")
+                              .attr("name", "links")
+                              .attr("class", "table table-dark table-striped table-hover")
+                              .append(jQuery("<caption>")
+                                 .text("This table contains all searchable threat intel feeds currently registered in analyst dashboard")
+                              )
+                              .append(jQuery("<thead>")
+                                 .attr("class", "thead-dark")
+                                 .append(jQuery("<tr>")
+                                    .append(jQuery("<th>")
+                                       .text("Resource")
+                                    )
+                                    .append(jQuery("<th>")
+                                       .text("Description")
+                                    )
+                                 )
+                              )
+                              .append(jQuery("<tbody>"))
+                        )
+                        .append(
+                           jQuery("<button>")
+                              .attr("id", "openallbt")
+                              .attr("name", "openallbt")
+                              .attr("class", "btn btn-primary")
+                              .text("Open all in new tabs")
+                        );
+
+                     var link_display = jQuery(display_card).find("table");
+
+                     for (var key in sources) {
+                        var text = key;
+               
+                        if (sources[key].indexOf("$replace$") < 0) {
+                           text = key + " (No IP assignment possible)"
+                        }
+               
+                        var url = sources[key].replace("$replace$", search_value);
+                        jQuery(link_display)
+                           .append(
+                              jQuery("<tr>")
+                                 .append(
+                                    jQuery("<td>").append(
+                                       jQuery("<a>")
+                                          .attr("href", url)
+                                          .attr("target", "_bank")
+                                          .attr("class", "")
+                                          .text(text)
+                                    )
+                                 )
+                                 .append(
+                                    jQuery("<td>")
+                                 )
+                           )
+                     }
+               
+                     jQuery("#resourceslinks").html('');
+                     jQuery("#resourceslinks").hide();
+                     jQuery("#resourceslinks")
+                        .append(display_card)
+                        .show("fade", 1000);
+                  } 
+                  else 
+                  {
+                     jQuery("#resourceslinks").html('');
+                     jQuery("#resourceslinks").hide();
+                     jQuery("#resourceslinks")
+                        .append(
+                           jQuery("<div>")
+                              .attr("class", "alert alert-danger")
+                              .text("Whoa there! That is not a IPV4 address, is it cowboy?")
+                        )
+                        .show("fade", 1000)
+                  }
+               }
+            });
+               
+
+            		
+                     
+                     
          
-         		var display_card = jQuery("<div>")
-					.append(
-						jQuery("<br />")
-					)
-					.append(jQuery("<table>")
-							.attr("id", "links")
-							.attr("name", "links")
-							.attr("class", "table table-dark table-striped table-hover")
-							.append(jQuery("<caption>")
-								.text("This table contains all searchable threat intel feeds currently registered in analyst dashboard")
-							)
-							.append(jQuery("<thead>")
-								.attr("class", "thead-dark")
-								.append(jQuery("<tr>")
-									.append(jQuery("<th>")
-										.text("Resource")
-									)
-									.append(jQuery("<th>")
-										.text("Description")
-									)
-								)
-							)
-							.append(jQuery("<tbody>"))
-					)
- 					.append(
- 						jQuery("<button>")
- 							.attr("id", "openallbt")
- 							.attr("name", "openallbt")
- 							.attr("class", "btn btn-primary")
- 							.text("Open all in new tabs")
- 					)	
-         
-         		var link_display = jQuery(display_card).find("table");
-         
-         		for (var key in sources) {
-         			var text = key;
-         
-         			if (sources[key].indexOf("$replace$") < 0) {
-         				text = key + " (No IP assignment possible)"
-         			}
-         
-         			var url = sources[key].replace("$replace$", search_value);
-         			jQuery(link_display)
-         				.append(
-         					jQuery("<tr>")
-         						.append(
-         							jQuery("<td>").append(
-         								jQuery("<a>")
-         									.attr("href", url)
-         									.attr("target", "_bank")
-		         							.attr("class", "")
-		         							.text(text)
-         							)
-         						)
-         						.append(
-         							jQuery("<td>")
-         						)
-         				)
-                	}
-         
-                	jQuery("#resourceslinks").html('');
-                	jQuery("#resourceslinks").hide();
-         		jQuery("#resourceslinks")
-         			.append(display_card)
-         			.show("fade", 1000);
-         	};
-         });
+               		
       </script>
    </body>
 </html>
