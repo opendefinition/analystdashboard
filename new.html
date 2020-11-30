@@ -54,9 +54,9 @@
                      <br />
                      <div class="input-group">
                         <div class="input-group-prepend">
-                           <span class="input-group-text bg-primary" id="basic-addon1">IP</span>
+                           <span class="input-group-text border-light bg-primary" id="basic-addon1">IP</span>
                         </div>
-                        <input type="text" id="searchfield" name="searchfield" class="form-control border rounded text-dark" placeholder="Search...">
+                        <input type="text" id="searchfield" name="searchfield" class="form-control border border-light text-dark" placeholder="Search...">
                      </div>
                      <div id="resourceslinks"></div>
                   </div>
@@ -74,7 +74,31 @@
                         </thead>
                         <tbody>
                            <tr>
+                              <td><a href=" https://www.brightcloud.com/tools/url-ip-lookup.php" target="_blank">Brightcloud</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://www.f-secure.com/en/web/labs_global/descriptions-index" target="_blank">F-Secure Threat Descriptions</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://viz.greynoise.io/" target="_blank">Greynoise Vizualise: Extended Greynoise querying</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://hunter.io/" target="_blank">Hunter: E-mail search database</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="http://insecam.org/" target="_blank">Insecam: Open IP cameras</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
                               <td><a href="https://malwr.com/" target="_blank">Malwr</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://attack.mitre.org" target="_blank">MITRE ATT&CK</a></td>
                               <td></td>
                            </tr>
                            <tr>
@@ -86,51 +110,15 @@
                               <td></td>
                            </tr>
                            <tr>
-                              <td><a href="https://unit42.paloaltonetworks.com" target="_blank">Unit 42 (Palo Alto Networks)</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://www.virustotal.com/#/home/upload" target="_blank">VirusTotal</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href=" https://www.brightcloud.com/tools/url-ip-lookup.php" target="_blank">Brightcloud</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://www.urlvoid.com" target="_blank">URL Void</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://www.f-secure.com/en/web/labs_global/descriptions-index" target="_blank">F-Secure Threat Descriptions</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://attack.mitre.org" target="_blank">MITRE ATT&CK</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
                               <td><a href="https://www.shadowserver.org/wiki/" target="_blank">Shadow Server</a></td>
                               <td></td>
                            </tr>
                            <tr>
-                              <td><a href="https://wigle.net/" target="_blank">Wigle: search for open WiFi networks</a></td>
+                              <td><a href="https://unit42.paloaltonetworks.com" target="_blank">Unit 42 (Palo Alto Networks)</a></td>
                               <td></td>
                            </tr>
-                           <tr>
-                              <td><a href="http://insecam.org/" target="_blank">Insecam: Open IP cameras</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://hunter.io/" target="_blank">Hunter: E-mail search database</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="http://zorexeye.com/" target="_blank">ZorexEye: Search images, software and other</a></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td><a href="https://pulsedive.com/" target="_blank">Pulsedive: OSINT search</a></td>
+                          <tr>
+                              <td><a href="https://www.urlvoid.com" target="_blank">URL Void</a></td>
                               <td></td>
                            </tr>
                            <tr>
@@ -138,7 +126,15 @@
                               <td></td>
                            </tr>
                            <tr>
-                              <td><a href="https://viz.greynoise.io/" target="_blank">Greynoise Vizualise: Extended Greynoise querying</a></td>
+                              <td><a href="https://www.virustotal.com/#/home/upload" target="_blank">VirusTotal</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="https://wigle.net/" target="_blank">Wigle: search for open WiFi networks</a></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td><a href="http://zorexeye.com/" target="_blank">ZorexEye: Search images, software and other</a></td>
                               <td></td>
                            </tr>
                         </tbody>
@@ -151,8 +147,7 @@
 
       <script>
          var sources = {
-         	"AbuseIPB": "https://www.abuseipdb.com/check/$replace$",
-         
+         	"AbuseIPDB": "https://www.abuseipdb.com/check/$replace$",
          	"Alien Vault OTX": "https://otx.alienvault.com/browse/pulses?q=$replace$",
          	"Censys.io": "https://censys.io/ipv4/$replace$",
          	"IBM X-Force Exchange": "https://exchange.xforce.ibmcloud.com/ip/$replace$",
